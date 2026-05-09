@@ -1,0 +1,8 @@
+export { HeroSection } from "./components/hero-section"
+export { ServicesSection } from "./components/services-section"
+export { DiferentialsSection } from "./components/diferencials-section"
+export { CasesSection } from "./components/cases-section"
+export { TestimonialsSection } from "./components/testimonials-section"
+export { FAQSection } from "./components/faq-section"
+export { CTASection } from "./components/cta-section"
+export { FooterSection } from "./components/footer-section"
