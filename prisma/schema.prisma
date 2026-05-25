@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id             String   @id @default(cuid())
+
+  name           String
+  company        String?
+  whatsapp       String
+
+  segment        String?
+  revenue        String?
+  investment     String?
+  objective      String?
+
+  status         String   @default("Novo")
+
+  isClient       Boolean  @default(false)
+
+  notes          String?
+  nextContactAt  String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Client {
+  id                String   @id @default(cuid())
+
+  company           String
+  contactName       String
+  whatsapp          String
+
+  segment           String?
+
+  address           String?
+
+  service           String?
+
+  monthlyFee        String?
+
+  dueDay            Int?
+
+  notes             String?
+
+  contractStatus    String   @default("Ativo")
+
+  financialStatus   String   @default("Em dia")
+
+  startedAt         DateTime @default(now())
+
+  lastPaymentAt     DateTime?
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model SiteContent {
+  id             String   @id @default(cuid())
+
+  heroTitle      String
+  heroSubtitle   String
+
+  whatsappNumber String @default("5511999999999")
+
+  navbarButton   String @default("Agendar reunião")
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  ctaBadge        String @default("Vamos crescer sua empresa")
+  ctaTitle        String @default("Transforme sua marca")
+  ctaHighlight    String @default("crescimento previsível")
+  ctaSubtitle     String @default("Estratégias premium de tráfego, automação e conversão desenvolvidas para negócios que querem escalar de verdade.")
+
+  navbarServicesText String @default("")
+  navbarCasesText    String @default("")
+  navbarFaqText      String @default("")
+  navbarContactText  String @default("")
+
+  footerDescription  String @default("")
+  footerEmail        String @default("")
+  footerInstagram    String @default("")
+  footerWhatsapp     String @default("")
+
+}
+
+model FAQItem {
+  id        String   @id @default(cuid())
+
+  question  String
+  answer    String
+
+  order     Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ServiceItem {
+  id          String   @id @default(cuid())
+
+  title       String
+  description String
+  imageUrl    String?
+
+  order       Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CaseItem {
+  id          String   @id @default(cuid())
+  clientName  String
+  niche       String
+  result      String
+  description String
+  imageUrl    String?
+  instagramUrl String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt  
+}
+
+model TestimonialItem {
+  id         String   @id @default(cuid())
+
+  name       String
+  role       String
+  company    String
+  content    String
+
+  imageUrl   String?
+
+  order      Int
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model TestimonialSection {
+  id          String   @id @default(cuid())
+
+  title       String
+  subtitle    String
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PlatformItem {
+  id        String   @id @default(cuid())
+
+  name      String
+  imageUrl  String?
+  link      String?
+
+  order     Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ClientItem {
+  id        String   @id @default(cuid())
+  name      String
+  logoUrl   String?
+  order     Int      @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

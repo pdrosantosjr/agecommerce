@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN     "financialStatus" TEXT NOT NULL DEFAULT 'Em dia',
+ADD COLUMN     "lastPaymentAt" TIMESTAMP(3),
+ADD COLUMN     "startedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
