@@ -16,6 +16,10 @@ interface CasesAdminClientProps {
     description: string
     imageUrl?: string | null
     instagramUrl?: string | null
+
+    websiteUrl?: string | null
+    websiteButtonText?: string | null
+
     order: number
   }[]
 
@@ -218,6 +222,36 @@ export function CasesAdminClient({
               "
             />
 
+            <input
+              name="websiteUrl"
+              placeholder="URL do site"
+
+              className="
+                h-14
+                w-full
+                rounded-2xl
+                border border-white/10
+                bg-white/[0.03]
+                px-5
+                text-white
+              "
+            />
+
+            <input
+              name="websiteButtonText"
+              placeholder="Texto botão site"
+
+              className="
+                h-14
+                w-full
+                rounded-2xl
+                border border-white/10
+                bg-white/[0.03]
+                px-5
+                text-white
+              "
+            />
+
             <ImageField />
 
             <button
@@ -389,6 +423,44 @@ export function CasesAdminClient({
                     defaultValue={
                       item.instagramUrl || ""
                     }
+
+                    className="
+                      h-14
+                      w-full
+                      rounded-2xl
+                      border border-white/10
+                      bg-white/[0.03]
+                      px-5
+                      text-white
+                    "
+                  />
+
+                  <input
+                    name="websiteUrl"
+                    defaultValue={
+                      item.websiteUrl || ""
+                    }
+
+                    placeholder="URL do site"
+
+                    className="
+                      h-14
+                      w-full
+                      rounded-2xl
+                      border border-white/10
+                      bg-white/[0.03]
+                      px-5
+                      text-white
+                    "
+                  />
+
+                  <input
+                    name="websiteButtonText"
+                    defaultValue={
+                      item.websiteButtonText || ""
+                    }
+
+                    placeholder="Texto botão site"
 
                     className="
                       h-14

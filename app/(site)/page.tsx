@@ -32,6 +32,19 @@ export default async function HomePage() {
         order: "asc",
       },
 
+      select: {
+        id: true,
+        clientName: true,
+        niche: true,
+        result: true,
+        description: true,
+        imageUrl: true,
+        instagramUrl: true,
+
+        websiteUrl: true,
+        websiteButtonText: true,
+      },
+  
       take: 9,
     })
 

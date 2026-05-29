@@ -50,6 +50,16 @@ export default async function CasesPage() {
         formData.get("instagramUrl")
       )
 
+    const websiteUrl =
+      String(
+        formData.get("websiteUrl")
+      )
+
+    const websiteButtonText =
+      String(
+        formData.get("websiteButtonText")
+      )
+
     const count =
       await prisma.caseItem.count()
 
@@ -61,11 +71,15 @@ export default async function CasesPage() {
         description,
         imageUrl,
         instagramUrl,
+        websiteUrl,
+        websiteButtonText,
         order: count + 1,
       },
     })
 
     revalidatePath("/admin/cases")
+    revalidatePath("/")
+    revalidatePath("/cases") 
   }
 
   async function updateCase(
@@ -108,6 +122,16 @@ export default async function CasesPage() {
         formData.get("instagramUrl")
       )
 
+    const websiteUrl =
+      String(
+        formData.get("websiteUrl")
+      )
+
+    const websiteButtonText =
+      String(
+        formData.get("websiteButtonText")
+      )
+
     const order =
       Number(
         formData.get("order")
@@ -125,11 +149,15 @@ export default async function CasesPage() {
         description,
         imageUrl,
         instagramUrl,
+        websiteUrl,
+        websiteButtonText,
         order,
       },
     })
 
     revalidatePath("/admin/cases")
+    revalidatePath("/")
+    revalidatePath("/cases")
   }
 
   async function deleteCase(

@@ -7,8 +7,12 @@ interface CasesSectionProps {
     niche: string
     result: string
     description: string
+
     imageUrl?: string | null
     instagramUrl?: string | null
+
+    websiteUrl?: string | null
+    websiteButtonText?: string | null
   }[]
 }
 
@@ -19,8 +23,12 @@ interface CaseCardProps {
     niche: string
     result: string
     description: string
+
     imageUrl?: string | null
     instagramUrl?: string | null
+
+    websiteUrl?: string | null
+    websiteButtonText?: string | null
   }
 
   mobile?: boolean
@@ -35,13 +43,13 @@ function CaseCard({
     <div
       className={`
         overflow-hidden
-        rounded-[28px]
+        rounded-[26px]
         border border-white/10
         bg-white/[0.03]
 
         ${
           mobile
-            ? "w-[260px]"
+            ? "w-[240px]"
             : ""
         }
       `}
@@ -62,8 +70,8 @@ function CaseCard({
 
           ${
             mobile
-              ? "h-44"
-              : "h-64"
+              ? "h-24"
+              : "h-52"
           }
         `}
       />
@@ -72,12 +80,13 @@ function CaseCard({
       <div
         className={`
           flex
+          min-h-[420px]
           flex-col
 
           ${
             mobile
               ? "p-5"
-              : "p-8"
+              : "p-6"
           }
         `}
       >
@@ -86,13 +95,13 @@ function CaseCard({
         <p
           className={`
             uppercase
-            tracking-[0.3em]
+            tracking-[0.25em]
             text-cyan-400
 
             ${
               mobile
-                ? "text-[11px]"
-                : "text-sm"
+                ? "text-[10px]"
+                : "text-[11px]"
             }
           `}
         >
@@ -104,13 +113,13 @@ function CaseCard({
           className={`
             mt-3
             font-black
-            leading-tight
+            leading-snug
             text-white
 
             ${
               mobile
-                ? "text-2xl"
-                : "text-4xl"
+                ? "text-[15px]"
+                : "text-2xl"
             }
           `}
         >
@@ -120,49 +129,62 @@ function CaseCard({
         {/* Result */}
         <div
           className={`
-            mt-6
-            w-full
-            break-words
-            whitespace-normal
+            mt-5
             rounded-2xl
             border border-cyan-400/20
             bg-cyan-400/10
-            text-cyan-300
 
             ${
               mobile
-                ? "p-4 text-sm font-semibold"
-                : "p-5 text-lg font-bold"
+                ? "p-4"
+                : "p-5"
             }
           `}
         >
 
-          <p className="w-full break-words">
+          <p
+            className={`
+              break-words
+              font-bold
+              leading-relaxed
+              text-justify
+              text-cyan-300
+
+              ${
+                mobile
+                  ? "text-sm"
+                  : "text-base"
+              }
+            `}
+          >
             {item.result}
           </p>
 
         </div>
 
         {/* Description */}
-        <div className="mt-5">
+        <p
+          className={`
+            mt-5
+            flex-1
+            leading-relaxed
+            text-zinc-400
 
-          <p
-            className="
-              text-[13px]
-              leading-6
-              text-zinc-400
-            "
-          >
-            {item.description}
-          </p>
+            ${
+              mobile
+                ? "text-[13px]"
+                : "text-sm"
+            }
+          `}
+        >
+          {item.description}
+        </p>
 
-        </div>
+        {/* Buttons */}
+        <div className="mt-6 flex flex-col gap-3">
 
-        {/* Instagram */}
-        {
-          item.instagramUrl && (
-
-            <div className="mt-6">
+          {
+            item.instagramUrl && (
 
               <a
                 href={item.instagramUrl}
@@ -171,11 +193,12 @@ function CaseCard({
 
                 className="
                   flex
+                  h-11
                   items-center
                   justify-center
                   rounded-xl
                   bg-cyan-400
-                  px-4 py-3
+                  px-4
                   text-sm
                   font-bold
                   text-black
@@ -184,10 +207,47 @@ function CaseCard({
                 Instagram
               </a>
 
-            </div>
+            )
+          }
 
-          )
-        }
+          {
+            item.websiteUrl && (
+
+              <a
+                href={item.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+
+                className="
+                  flex
+                  h-11
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border border-white/10
+                  bg-white/[0.03]
+                  px-4
+                  text-sm
+                  font-bold
+                  text-white
+
+                  transition-all
+                  duration-300
+
+                  hover:border-cyan-400/30
+                  hover:text-cyan-400
+                "
+              >
+                {
+                  item.websiteButtonText ||
+                  "Ver site"
+                }
+              </a>
+
+            )
+          }
+
+        </div>
 
       </div>
 
@@ -208,7 +268,7 @@ export function CasesSection({
         px-4
         py-20
         md:px-6
-        md:py-32
+        md:py-28
       "
     >
 
@@ -234,10 +294,10 @@ export function CasesSection({
         {/* MOBILE */}
         <div
           className="
-            mt-20
+            mt-16
             grid
             grid-flow-col
-            auto-cols-[260px]
+            auto-cols-[230px]
             gap-4
             overflow-x-auto
             pb-4
@@ -262,7 +322,7 @@ export function CasesSection({
             mt-16
             hidden
             grid-cols-3
-            gap-8
+            gap-6
 
             md:grid
           "
@@ -277,41 +337,41 @@ export function CasesSection({
 
         </div>
 
-        {/* Button Desktop Only */}
-          <div
-            className="
-              mt-14
-              hidden
-              flex justify-center
+        {/* Button */}
+        <div
+          className="
+            mt-14
+            hidden
+            justify-center
 
-              md:flex
+            md:flex
+          "
+        >
+
+          <a
+            href="/cases"
+
+            className="
+              rounded-2xl
+              border border-white/10
+              bg-white/[0.03]
+              px-7
+              py-4
+              text-base
+              font-medium
+              text-white
+              backdrop-blur-xl
+              transition-all
+              duration-300
+
+              hover:border-cyan-400/30
+              hover:bg-cyan-400/[0.03]
             "
           >
+            Ver todos os cases
+          </a>
 
-            <a
-              href="/cases"
-
-              className="
-                rounded-2xl
-                border border-white/10
-                bg-white/[0.03]
-                px-8
-                py-5
-                text-lg
-                font-medium
-                text-white
-                backdrop-blur-xl
-                transition-all
-                duration-300
-
-                hover:border-cyan-400/30
-                hover:bg-cyan-400/[0.03]
-              "
-            >
-              Ver todos os cases
-            </a>
-
-          </div>
+        </div>
 
       </div>
 
